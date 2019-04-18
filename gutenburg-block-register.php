@@ -62,6 +62,7 @@ if ( !class_exists("RegisterBlocks") ) {
 			            'description' 	=> $file_headers['description'] ? $file_headers['description'] : '',
 			            'category' 		=> $file_headers['category'] ? $file_headers['category'] : 'layout',
 			            'title' 		=> $file_headers['name'],
+			            'file_name' 	=> $block->getFilename(),
 			            'icon' 			=> $file_headers['icon'] ? $file_headers['icon'] : 'block-default',
 			            'keywords' 		=> $file_headers['keywords'] ? self::FormatMultipleBlockOptions($file_headers['keywords']) : array(),
 			            'alignment'		=> $file_headers['alignment'] ? $file_headers['alignment'] : '',
@@ -89,7 +90,7 @@ if ( !class_exists("RegisterBlocks") ) {
 		public static function GenerateBlockArray( $block, $text_domain ) {
 
 			$blockArray = array(
-				'render_template' 	=> 'templates/blocks/' . $block['name'] . '.php',
+				'render_template' 	=> 'templates/blocks/' . $block['file_name'],
 				'title' 			=> __( $block['title'], $text_domain),
 				'description'		=> __( $block['description'], $text_domain),
 				'category' 			=> $block['category'],
